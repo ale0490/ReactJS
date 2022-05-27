@@ -16,10 +16,13 @@ const ItemCount = () => {
     };
 
     return (
-        <div className="item-count">
-        <Button onClick={less} className="button-count">-</Button>
-        <p className="count">{count}</p>
-        <Button onClick={plus} className="button-count">+</Button>
+        <div>
+            <div className="item-count">
+                <Button onClick={less} className="button-count">-</Button>
+                <p className="count">{count}</p>
+                <Button onClick={plus} className="button-count">+</Button>
+            </div>
+            <Button> Agregar </Button>
         </div>
         );
 };
