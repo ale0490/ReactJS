@@ -16,13 +16,13 @@ const ItemCount = () => {
     };
 
     return (
-        <div>
+        <div className="item-count-container">
             <div className="item-count">
                 <Button onClick={less} className="button-count">-</Button>
                 <p className="count">{count}</p>
                 <Button onClick={plus} className="button-count">+</Button>
             </div>
-            <Button> Agregar </Button>
+            <Button className="add-item"> Agregar </Button>
         </div>
         );
 };

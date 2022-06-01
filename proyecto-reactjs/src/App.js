@@ -1,8 +1,11 @@
 import './App.css';
 import NavBar from './Components/NavBar/NavBar';
-import CardList from './Components/ItemListContainer/ItemListContainer';
+import anillos from './Utils/anillos';
+import brazaletes from './Utils/brazaletes';
+import colgantes from './Utils/colgantes';
+import CardItemContainer from './Components/Cards-home/CardItemContainer'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import ItemList from './Components/ItemListContainer/ItemList';
+import ItemDetailContainer from './Components/ItemDetails.js/ItemDetailscontainer';
 
 function App() {
   return (
@@ -17,12 +20,20 @@ function App() {
           <div className='cards'>
             <h2>Anillos populares</h2>
             <div className='container-cards'>
-              <CardList/>
+              <CardItemContainer item={anillos}/>
+            </div>
+            <h2>Brazaletes populares</h2>
+            <div className='container-cards'>
+              <CardItemContainer item={brazaletes}/>
+            </div>
+            <h2>Colgantes populares</h2>
+            <div className='container-cards'>
+              <CardItemContainer item={colgantes}/>
             </div>
           </div>
         </div>
       </BrowserRouter>
-      <ItemList></ItemList>
+      <ItemDetailContainer/>
     </div>
   );
 }

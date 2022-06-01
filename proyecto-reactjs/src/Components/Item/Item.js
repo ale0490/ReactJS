@@ -1,14 +1,12 @@
+import "./Item.css"
 import Card from '@mui/material/Card';
-import ItemCount from '../ItemCount/ItemCount';
 
-const Item =({data})=>{
+const Item =({title, image, price})=>{
 
     return (
         <Card variant="outlined">
-            <img src={data.image}></img>
-            <h3>{data.title}</h3>
-            <p>$ {data.price}</p>
-            <ItemCount></ItemCount>
+            <img src={image} className="imagen-item"></img>
+            <h3>{title}</h3>
         </Card>
     )
 };

@@ -17,6 +17,9 @@ const NavBar = () => {
           <a>Brazaletes</a>
         </li>
         <li>
+          <a>Colgantes</a>
+        </li>
+        <li>
           <a>Contacto</a>
         </li>
       </ul>
