@@ -1,39 +1,35 @@
 import './App.css';
 import NavBar from './Components/NavBar/NavBar';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './Pages/Home';
+import Anillos from './Pages/Anillos';
+import Brazaletes from './Pages/Brazaletes';
+import Colgantes from './Pages/Colgantes';
+import Contacto from './Pages/Contacto';
+import NotFound from './Pages/NotFound';
+import Details from './Pages/Details';
 import anillos from './Utils/anillos';
 import brazaletes from './Utils/brazaletes';
 import colgantes from './Utils/colgantes';
-import CardItemContainer from './Components/Cards-home/CardItemContainer'
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import ItemDetailContainer from './Components/ItemDetails.js/ItemDetailscontainer';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar/>
+        <h1>E-commerce ReacJS</h1>
         <Routes>
-          <Route/>
+          <Route exact path='/' element={<Home/>}/>
+          <Route exact path='/Anillos' element={<Anillos/>}/>
+          <Route exact path='/Anillos/:id' element={<Details item={anillos}/>}/>
+          <Route exact path='/Brazaletes' element={<Brazaletes/>}/>
+          <Route exact path='/Brazaletes/:id' element={<Details item={brazaletes}/>}/>
+          <Route exact path='/Colgantes' element={<Colgantes/>}/>
+          <Route exact path='/Colgantes/:id' element={<Details item={colgantes}/>}/>
+          <Route exact path='/Contacto' element={<Contacto/>}/>
+          <Route exact path='*' element={<NotFound/>}/>
         </Routes>
-        <div className='section'>
-          <h1 className='h1'>E-commerce ReacJS</h1>
-          <div className='cards'>
-            <h2>Anillos populares</h2>
-            <div className='container-cards'>
-              <CardItemContainer item={anillos}/>
-            </div>
-            <h2>Brazaletes populares</h2>
-            <div className='container-cards'>
-              <CardItemContainer item={brazaletes}/>
-            </div>
-            <h2>Colgantes populares</h2>
-            <div className='container-cards'>
-              <CardItemContainer item={colgantes}/>
-            </div>
-          </div>
-        </div>
       </BrowserRouter>
-      <ItemDetailContainer/>
     </div>
   );
 }

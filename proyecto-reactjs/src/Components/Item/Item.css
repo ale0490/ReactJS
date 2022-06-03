@@ -1,4 +1,23 @@
+.card-item {
+    height: 430px;
+    margin: 10px 0;
+}
 .imagen-item {
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
+    margin: 15px;
+}
+.title-item {
+    margin: 15px 10px;
+    height: 80px;
+    font-size: 25px;
+}
+.price-item{
+    margin: 15px 5px;
+    font-size: 22px;
+    font-weight:bold;
+}
+.link {
+    text-decoration: none;
+    color: black;
 }

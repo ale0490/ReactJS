@@ -1,0 +1,16 @@
+.link {
+    text-decoration: none;
+}
+.container {
+    margin: 30px;
+}
+.notfound-image{
+    height: 600px;
+}
+.links {
+    font-size: 40px;
+    color: black;
+}
+.contacto-image {
+    height: 400px;
+}

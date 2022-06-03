@@ -20,7 +20,12 @@ ul {
     margin: 0;
     padding: 1em;
 }
-li .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
-    background-color:   #0b1d33e6;
-    box-shadow: none;
+.button-navbar {
+    background-color: inherit;
+    border: none;
+}
+.link-navbar {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 3rem;
 }
