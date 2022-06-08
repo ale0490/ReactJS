@@ -1,16 +1,23 @@
-import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetails.css'
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
+import ItemCount from '../ItemCount/ItemCount';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ItemDetails =({data})=>{
+
+    const [showButton, setShowButton] = useState(false);
+
     const {title, price, image, image2, image3, image4, image5} = data;
 
     const [size, setSize] = useState('');
-
+    
+    const [count, setCount] = useState(1);
+    
     const handleChange = (event) => {
         setSize(event.target.value );
     };
@@ -34,8 +41,18 @@ const ItemDetails =({data})=>{
                         <MenuItem value={13}>13</MenuItem>
                     </Select>
                 </FormControl>
-                <h4 className='item-details-count'> Cantidad </h4>
-                <ItemCount></ItemCount>
+                {!showButton ?
+                        <ItemCount count={count} setCount={setCount} state={setShowButton}/>
+                    :
+                    <div className='option'>
+                        <Button>
+                            <Link to="/" className='link'>Seguir Comprando</Link>
+                        </Button>
+                        <Button>
+                            <Link to="/Cart" className='link'>Ir al Carrito</Link>
+                        </Button>
+                    </div>
+                }
             </div>
             <div className='item-size'>
                 <h4> Descripcion</h4>

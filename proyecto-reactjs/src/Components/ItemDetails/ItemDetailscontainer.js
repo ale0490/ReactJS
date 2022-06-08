@@ -2,7 +2,6 @@ import ItemDetails from './ItemDetails';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-
 const ItemDetailContainer = ({data}) => {
 
     const [product, setProduct] = useState({});
