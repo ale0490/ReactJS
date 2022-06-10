@@ -42,7 +42,7 @@ const ItemDetails =({data})=>{
                     </Select>
                 </FormControl>
                 {!showButton ?
-                        <ItemCount count={count} setCount={setCount} state={setShowButton}/>
+                        <ItemCount count={count} setCount={setCount} state={setShowButton} data={data} />
                     :
                     <div className='option'>
                         <Button>
