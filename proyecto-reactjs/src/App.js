@@ -12,6 +12,7 @@ import Details from './Pages/Details';
 import anillos from './Utils/anillos';
 import brazaletes from './Utils/brazaletes';
 import colgantes from './Utils/colgantes';
+import Cart from './Pages/Cart';
 
 function App() {
   return (
@@ -19,7 +20,6 @@ function App() {
       <CartProvider>
         <BrowserRouter>
           <NavBar/>
-          <h1>E-commerce ReacJS</h1>
           <Routes>
             <Route exact path='/' element={<Home/>}/>
             <Route exact path='/Anillos' element={<Anillos/>}/>
@@ -29,6 +29,7 @@ function App() {
             <Route exact path='/Colgantes' element={<Colgantes/>}/>
             <Route exact path='/Colgantes/:id' element={<Details item={colgantes}/>}/>
             <Route exact path='/Contacto' element={<Contacto/>}/>
+            <Route exact path='/Cart' element={<Cart/>}/>
             <Route exact path='*' element={<NotFound/>}/>
           </Routes>
         </BrowserRouter>

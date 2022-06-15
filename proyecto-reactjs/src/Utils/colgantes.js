@@ -41,9 +41,9 @@ const colgantes = [
         id:"5",
         title:"Colgante Mjolnir Plata",
         price:"650",
-        image:"../../colgantes/colgante-mjolnir-plata-1.webp",
-        image2:"../../colgantes/colgante-mjolnir-plata-2.webp",
-        image3:"../../colgantes/colgante-mjolnir-plata-3.webp",
+        image:"../colgantes/colgante-mjolnir-plata-1.webp",
+        image2:"../colgantes/colgante-mjolnir-plata-2.webp",
+        image3:"../colgantes/colgante-mjolnir-plata-3.webp",
     },
     {
         category:"Colgantes",

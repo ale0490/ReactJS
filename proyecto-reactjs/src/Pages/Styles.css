@@ -1,9 +1,6 @@
 .link {
     text-decoration: none;
 }
-.container {
-    margin: 30px;
-}
 .notfound-image{
     height: 600px;
 }
@@ -13,4 +10,52 @@
 }
 .contacto-image {
     height: 400px;
+}
+.cart-view-container {
+    max-width: 1200px;
+    position: relative;
+    margin: auto;
+    text-align: start;
+}
+h1 {
+    border-bottom: 1px solid #cccccc
+}
+.container{
+    width: calc(68.75% - 20px);
+}
+.column{
+    float: left;
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+.cart-container{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px 0;
+    position: relative;
+    border-bottom: 1px solid #cccccc;
+}
+h2 {
+    font-weight: 300;
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: #1b262c;
+    display: block;
+    letter-spacing: 2px;
+    margin: 0 auto 15px 0;
+}
+.cart-image{
+    width: 200px;
+}
+.cart-total {
+    font-weight: 700;
+    font-size: larger;
+}
+.right {
+    float: right;
+    position: relative;
 }

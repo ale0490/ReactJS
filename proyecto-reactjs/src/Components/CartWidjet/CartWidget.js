@@ -26,7 +26,7 @@ const CardWidget = () => {
         <div>
             <ShoppingCartIcon color={'primary'} aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined} onClick={handleClick}/>
             <Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={handleClose} MenuListProps={{'aria-labelledby':'basic-button'}}>
-                <div className="cart-container">
+                <div className="cartwidget-container">
                     {cartList.length === 0 && (
                     <>
                         <p>No hay productos</p>
@@ -35,18 +35,18 @@ const CardWidget = () => {
                     )}
                     {cartList.map( (item) => {
                         return(
-                            <div className='cart-container-item' key={item.id}>
+                            <div className='cartwidget-container-item' key={item.id}>
                                 <div>
-                                    <img className='cart-image' src={`/${item.image}`}  />
+                                    <img className='cartwidget-image' src={`/${item.image}`}  />
                                 </div>
-                                <div className='cart-details'>
+                                <div className='cartwidget-details'>
                                     <p>{item.title}</p>
                                     <span>$ {item.price}</span>
                                 </div>
                                 <div>
                                     <p>Cantidad</p>
                                 </div>
-                                <div className='cart-button-delete'>
+                                <div className='cartwidget-button-delete'>
                                     <button >
                                         <DeleteIcon />
                                     </button>
@@ -54,6 +54,9 @@ const CardWidget = () => {
                             </div>
                         )
                     })} 
+                    <button>
+                        <Link to="/Cart">Continuar</Link>
+                    </button>
                 </div>
             </Menu>
         </div>

@@ -5,7 +5,7 @@ const CartContext = createContext()
 const CartProvider = ( {children} ) => {
 
     const [ cartList, setCartList ] = useState([])
-    const [totalPrice, setTotalPrice] = useState(0)
+    const [ totalPrice, setTotalPrice ] = useState(0)
 
     
     const addProductToCart = (product) =>{

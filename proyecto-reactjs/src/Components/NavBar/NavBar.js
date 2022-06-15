@@ -33,8 +33,13 @@ const NavBar = () => {
             <Link to="/Contacto" className="link-navbar"> Contacto </Link>
           </button>
         </li>
-      </ul>
+        <li>
+          <button className="button-navbar">
+            <Link to="/Cart" className="link-navbar"> Carrito </Link>
+          </button>
+        </li>
         <CardWidget/>
+      </ul>
     </div>
   )
 }
