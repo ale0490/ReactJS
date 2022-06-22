@@ -1,9 +1,9 @@
 import ItemDetailsContainer from '../Components/ItemDetails/ItemDetailscontainer'
 
-const Details = ({item}) => {
+const Details = () => {
     
     return (
-        <ItemDetailsContainer data={item}/>
+        <ItemDetailsContainer/>
     )
 }
 

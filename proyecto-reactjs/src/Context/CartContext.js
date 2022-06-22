@@ -6,29 +6,39 @@ const CartProvider = ( {children} ) => {
 
     const [ cartList, setCartList ] = useState([])
     const [ totalPrice, setTotalPrice ] = useState(0)
-
     
     const addProductToCart = (product) =>{
         let isInCart = cartList.find(cartItem => cartItem.id === product.id)
         if(!isInCart) {
-            console.log("se agrego el producto:", product)
             setTotalPrice(totalPrice + product.price)
             return setCartList(cartList => [...cartList, product])
         }
     }
 
+    const deleteProduct = (product) => {
+        setCartList(cartList.filter( (cartProduct) => cartProduct.id !== product.id) )
+    }
+
+    const cleanCart = () => {
+        setTotalPrice(0)
+        setCartList([])
+    }
+
     const data = {
         cartList,
         addProductToCart,
-        totalPrice
+        totalPrice,
+        cleanCart,
+        deleteProduct
     }
 
     return (
         <CartContext.Provider value={data}>
+             {console.log(cartList)}
             {children}
         </CartContext.Provider>
     )
 }
 
-export default CartContext
-export { CartProvider }
+export default CartContext;
+export { CartProvider };

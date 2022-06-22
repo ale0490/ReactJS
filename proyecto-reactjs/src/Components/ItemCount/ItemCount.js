@@ -15,7 +15,7 @@ const ItemCount = ({count, setCount, state, data}) => {
         setCount(count + 1)
     };
 
-    //State
+    //State show
     const stateTrue = () =>{
         return(
             state(true)
@@ -24,6 +24,7 @@ const ItemCount = ({count, setCount, state, data}) => {
 
     //Context 
     const { addProductToCart } = useContext( CartContext )
+    
     const add = () =>{
         return(
             addProductToCart(data, count)
@@ -34,6 +35,7 @@ const ItemCount = ({count, setCount, state, data}) => {
     const addCart = () =>{
         add()
         stateTrue()
+        {console.log (data, count)}
     }
 
     return (

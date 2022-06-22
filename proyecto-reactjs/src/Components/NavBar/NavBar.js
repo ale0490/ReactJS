@@ -49,7 +49,7 @@ const NavBar = () => {
             {categories.map( (cat) => {
               return (
                 <MenuItem onClick={handleClose}>
-                  <Link to={`/products/${cat}`} className="link-navbar"> {cat} </Link>
+                  <Link to={`${cat}`} className="link-navbar"> {cat} </Link>
                 </MenuItem>
               )})}
           </Menu>
