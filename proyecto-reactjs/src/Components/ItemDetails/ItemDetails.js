@@ -1,12 +1,15 @@
-import './ItemDetails.css'
+//React
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+//Material UI
 import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import Button from '@mui/material/Button';
+//Propio
 import ItemCount from '../ItemCount/ItemCount';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import './ItemDetails.css'
 
 const ItemDetails =({data})=>{
 
@@ -15,8 +18,6 @@ const ItemDetails =({data})=>{
     const {title, price, image, image2, image3, image4, image5} = data;
 
     const [size, setSize] = useState('');
-    
-    const [count, setCount] = useState(1);
     
     const handleChange = (event) => {
         setSize(event.target.value );
@@ -32,6 +33,8 @@ const ItemDetails =({data})=>{
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label"> Tamaño </InputLabel>
                     <Select labelId="demo-simple-select-label" id="demo-simple-select" value={size} label="Tamaño" onChange={handleChange}>
+                        <MenuItem value={5}>5</MenuItem>
+                        <MenuItem value={6}>6</MenuItem>
                         <MenuItem value={7}>7</MenuItem>
                         <MenuItem value={8}>8</MenuItem>
                         <MenuItem value={9}>9</MenuItem>
@@ -42,7 +45,7 @@ const ItemDetails =({data})=>{
                     </Select>
                 </FormControl>
                 {!showButton ?
-                        <ItemCount count={count} setCount={setCount} state={setShowButton} data={data} />
+                        <ItemCount state={setShowButton} data={data} />
                     :
                     <div className='option'>
                         <Button>

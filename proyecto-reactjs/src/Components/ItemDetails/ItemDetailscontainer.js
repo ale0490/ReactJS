@@ -1,9 +1,11 @@
-import ItemDetails from './ItemDetails';
+//React
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+//Firebase
 import db from '../../Utils/firebaseConfig';
 import { doc, getDoc } from "firebase/firestore";
-
+//Propio
+import ItemDetails from './ItemDetails';
 
 const ItemDetailContainer = () => {
 

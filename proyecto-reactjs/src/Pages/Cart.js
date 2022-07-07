@@ -1,149 +1,94 @@
-//react
+//React
 import { useContext, useState } from "react";
 import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom"
-//material
-import { Button } from "@mui/material";
-import TextField from '@mui/material/TextField';
+//Material UI
 import DeleteIcon from '@mui/icons-material/Delete';
-//firebase
-import { addDoc, collection } from 'firebase/firestore'
-import db from '../Utils/firebaseConfig'
-//propio
+//Propio
 import CartContext from "../Context/CartContext";
 import Modal from '../Components/Modal/Modal'
+import FormValidation from "../Components/FormValidation/FormValidation";
 import "./Styles.css";
 
 const Cart = () =>{
 
-    const { cartList, totalPrice, cleanCart, count } = useContext(CartContext)
-    const [showModal, setShowModal] = useState(false)
-    const [formValue, setFormValue] = useState({name: '', phone: '', email: ''})
-    const [success, setSuccess] = useState()
-    const navigate = useNavigate()
-
-    const [order, setOrder] = useState({
-        buyer: {},
-        items: cartList.map( item => {
-            return {
-                id: item.id,
-                title: item.title,
-                price: item.price,
-            }
-        } ),
-        total: totalPrice
-    })
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setOrder({...order, buyer: formValue})
-        saveData({...order, buyer: formValue})
-    }
-
-    const handleChange = (e) => {
-        setFormValue({...formValue, [e.target.name]: e.target.value})
-    }
-
-    const saveData = async (newOrder) => {
-        const orderFirebase = collection(db, 'purchase-orders')
-        const orderDoc = await addDoc(orderFirebase, newOrder)
-        setSuccess(orderDoc.id)
-        cleanCart()
-    }
-    
-    const finishOrder = () => {
-        navigate('/')
-    }
+    const { cartList, totalPrice, cleanCart, deleteProduct } = useContext(CartContext)
+    const [showModal, setShowModal] = useState(false)   
 
     return(
         <div className="cart-view-container"> 
-            <h1>Carrito </h1>
+            <h2 className="h2-cart"> Carrito </h2>
             {cartList.length === 0 ? 
-                (<div className="column width">
+                (<div className="column width left">
                     <div className="cart-empy">
                         <p className="text-empy">Aun no hay productos en tu carrito</p>
-                        <Link to="/" className="link button-empy" >Agregalos →</Link>
+                        <Link to="/" className="button-empy decoration-none" > ← Agregalos </Link>
                     </div>
                 </div>) 
                 :
-                    (<div className='cart-section'>
-                        <div className="container column" >
-                            {cartList.map( (item) => {
-                                return(
-                                    <div className='cart-container' key={item.id}>
-                                        <div className="column">
+                (<><div className="cart-product">
+                    <div className="width-1 column left" >
+                        {cartList.map( (item) => {
+                            return(
+                                <div className='cart-container' key={item.id}>
+                                    <div className="width-2 column left">
                                             <img className='cart-image' src={`/${item.image}`}  />
-                                        </div>
-                                        <div className="container column">
-                                                <h2>{item.title}</h2>
-                                                <span>$ {item.price}</span>
-                                                <p>Cantidad</p>
-                                                <span>{count}</span>
-                                                <p>Total: $ {item.price}</p>
-                                        </div>
-                                        <div className='cart-button-delete'>
-                                            <button> <DeleteIcon /></button>
-                                        </div>
                                     </div>
-                                )
-                            })} 
+                                    <div className="width-1 column left">
+                                            <h3 className="h3-cart">
+                                                <span>{item.title}</span>
+                                            </h3>
+                                            <p className="p-cart"> Tamaño: 
+                                                <span className="span"> tamaño </span>
+                                            </p>
+                                            <p className="p-cart"> Precio: 
+                                                <span className="span"> ${item.price} </span>
+                                            </p>
+                                            <p className="p-cart"> Cantidad: 
+                                                <span className="span"> {item.cantidad} </span>
+                                            </p>
+                                            <p className="p-cart">Total: 
+                                                <span className="span"> ${item.price*item.cantidad} </span>
+                                            </p>
+                                            <button className='button-delete' onClick ={()=>{deleteProduct(item)}}>  
+                                                <DeleteIcon/> 
+                                            </button>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                        <div className="container-vaciar">
+                            <div className="vaciar">
+                                <button className="btn-vaciar" onClick ={()=>{cleanCart()}}>  
+                                    <img src="./remove-cart.png"/>
+                                </button>
+                                <p className="p-cart right m0"> Vaciar </p>
+                            </div>
                         </div>
+                    </div>
+                    <div className="width-2 column left">
                         <div>
-                            <div className='cart-total'>
-                                <span className="right">$ {totalPrice}</span>
-                                <p>Total</p>
-                            </div>
-                            <div>
-                                <Button className='btn-custom' onClick={() => setShowModal(true)}> Completar Compra </Button>
-                            </div>
-                            <div>imagenes tarjetas</div>
-                            <div>
-                                <Button className='btn-custom'> 
-                                    <Link to="/"> Seguir Comprando </Link>
-                                </Button>
+                            <div className="total">
+                                <p className='p-total'>
+                                    <span className="right ">$ {totalPrice}</span>
+                                    <span>Total</span>
+                                </p>
+                                <button className='button-cart button-completar' onClick={() => setShowModal(true)}> Completar Compra 
+                                </button>
+                                <img className="pagos-cart" src="./pago.webp"/>
+                                <button className='button-cart button-seguir'> 
+                                    <Link className="decoration-none seguir-comprando" to="/"> Seguir Comprando →</Link>
+                                </button>
                             </div>
                         </div>
-                    
+                    </div>
                     <Modal 
-                        title={success ? 'Compra exitosa' : 'Datos de Facturacion'} 
+                        title={'Datos de Facturacion'} 
                         open={showModal} 
                         handleClose={() => setShowModal(false)}>
-                        {success ? 
-                            (<div>
-                                Orden generada con exito!
-                                Numero de orden: {success}
-                                <button onClick={finishOrder}>Aceptar</button>
-                            </div>) 
-                            : 
-                            (<form 
-                                className="form-contact" 
-                                onSubmit={handleSubmit}>
-                                <TextField 
-                                    id="outlined-basic" 
-                                    name="name" 
-                                    label="Nombre y Apellido" 
-                                    variant="outlined" 
-                                    value={formValue.name} 
-                                    onChange={handleChange}/>
-                                <TextField 
-                                    id="outlined-basic" 
-                                    name="phone" 
-                                    label="Telefono" 
-                                    variant="outlined" 
-                                    value={formValue.phone}
-                                    onChange={handleChange}/>
-                                <TextField 
-                                    id="outlined-basic" 
-                                    name="email"
-                                    label="Mail" 
-                                    value={formValue.email}
-                                    variant="outlined" 
-                                    onChange={handleChange}/>
-                                <button type="submit">Enviar</button>
-                            </form>)
-                        }
+                        <FormValidation state={setShowModal}/>
                     </Modal>
-                </div>)
+                </div>
+                </>)
             }
         </div>
     )

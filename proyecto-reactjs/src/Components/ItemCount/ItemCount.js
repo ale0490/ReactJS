@@ -1,11 +1,15 @@
-import "./ItemCount.css";
+//React
+import { useContext,useState } from "react";
+//Material UI
 import Button from '@mui/material/Button';
+//Propio
 import CartContext from '../../Context/CartContext';
-import { useContext } from "react";
+import "./ItemCount.css";
 
-const ItemCount = ({count, setCount, state, data}) => {
+const ItemCount = ({state, data}) => {
 
-    //Contador
+    const [count, setCount] = useState(1);
+
     const less = () =>{
         if (count>1){
             setCount(count - 1)
@@ -15,27 +19,24 @@ const ItemCount = ({count, setCount, state, data}) => {
         setCount(count + 1)
     };
 
-    //State show
     const stateTrue = () =>{
         return(
             state(true)
         )
     }
 
-    //Context 
     const { addProductToCart } = useContext( CartContext )
     
     const add = () =>{
         return(
-            addProductToCart(data, count)
+            addProductToCart({...data, cantidad: count})
         )
     }
 
-    //onClick   
     const addCart = () =>{
         add()
         stateTrue()
-        {console.log (data, count)}
+        {console.log(data)}
     }
 
     return (
@@ -50,7 +51,9 @@ const ItemCount = ({count, setCount, state, data}) => {
             <Button className="add-item" onClick={addCart}> Agregar </Button>
         </div>
         </>
+        
         );
+        
 };
 
 export default ItemCount;

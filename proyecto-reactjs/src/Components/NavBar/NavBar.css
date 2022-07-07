@@ -1,35 +1,90 @@
-.navbar {
-    background-color: #0b1d33;
-    display: grid;
+ul{
+    list-style: disc outside;
+}
+.css-1t29gy6-MuiToolbar-root {
+    background: #0e2745;
+    display: flex;
+    justify-content: space-between;
     grid-template-columns: min-content auto min-content;
-    align-items: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+}
+.top-bar{
     width: 100%;
-    position: static;
+    position: relative;    
+    height: 40px;
+}
+.menu {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.top-bar li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.menu li {
+    position: relative;
+    display: inline-block;
+    margin: auto 15px;
+    border: 0;
+}
+.top-bar .menu a {
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    position: relative;
+    display: block;
+}
+.mini-cart {
+    text-align: center;
+    padding: 15px;
+}
+.icon-cart:before {
+    content: "\e902";
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.2em;
+    text-align: center;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: 0.15em;
+}
+.main-nav {
+    transition: all .3s linear;
+    width: 100%;
 }
 .logo {
-    width: 150px;
-    margin: 0.5em 1em;
-
+    padding: 15px;
 }
-ul {
-    display: flex;
-    list-style:none;
-    justify-content: space-between;
-    margin: 0;
-    padding: 1em;
+.img-logo{
+    max-width: 100px;
 }
-.button-navbar {
+.nav ul.menu {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.deco-none{
+    text-decoration: none;
+}
+.nav-li {
     background-color: inherit;
     border: none;
     color: white;
-    font-size: calc(10px + 2vmin);
+    font-size: 30px ;
 }
-.link-navbar {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 3rem;
-    background-color: #0b1d33;
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    width: 100%;
+    background: #133660 !important;
+    left: 9px !important;
+    top: 120px !important;
+    margin: 0 auto !important;
 }
-
+.css-6hp17o-MuiList-root-MuiMenu-list{
+    display: flex;
+    justify-content: space-around;
+}
+.link-cat-nav{
+    color: white;
+    font-size: 20px;
+}

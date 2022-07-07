@@ -1,12 +1,16 @@
+//React
 import { Link } from 'react-router-dom';
+//Propio
 import './Styles.css'
+
 const Contacto = () =>{
+
     return (
         <>  
-            <div className='container'>
-                <Link to="/" className='links'>Volver al inicio</Link>
-            </div>
-            <img src='./construccion.webp' className='contacto-image'/>
+        <img src='./construccion.webp' className='contacto-image'/>
+        <div>
+            <Link to="/" className='link-inicio'>Volver al inicio</Link>
+        </div>
         </>
     )
 };

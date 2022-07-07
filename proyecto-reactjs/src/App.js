@@ -7,23 +7,32 @@ import ProductsList from './Pages/ProductsList';
 import NotFound from './Pages/NotFound';
 import Details from './Pages/Details';
 import Cart from './Pages/Cart';
+import Contacto from './Pages/Contacto';
+import Joyeria from './Pages/Joyeria';
+import BannerFooter from './Components/BannerFooter/BannerFooter'
+import Footer from './Components/Footer/Footer';
 
 function App() {
+
   return (
-    <div className="App">
-      <CartProvider>
+    <CartProvider>
+      <div className="App">
         <BrowserRouter>
           <NavBar/>
           <Routes>
             <Route exact path='/' element={<Home/>}/>
-            <Route path='/:category' element={<ProductsList />}/>  
-            <Route exact path='/:category/:id' element={<Details/>}/>
+            <Route exact path='/Joyeria' element={<Joyeria/>}/>
+            <Route exact path='/Cat/:category' element={<ProductsList />}/>  
+            <Route exact path='/Cat/:category/:id' element={<Details/>}/>
             <Route exact path='/Cart' element={<Cart/>}/>
-            <Route exact path='*' element={<NotFound/>}/>
+            <Route exact path='/Contacto' element={<Contacto/>}/>
+            <Route path='*' element={<NotFound/>}/>
           </Routes>
+          <BannerFooter/>
+          <Footer/>
         </BrowserRouter>
-      </CartProvider>
-    </div>
+      </div>
+    </CartProvider>
   );
 }
 

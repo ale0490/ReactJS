@@ -1,0 +1,30 @@
+.newsletter{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 640px;
+}
+.input-news  {
+    width: 100%;
+    background: #fff !important;
+}
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root, .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+    height: 50px !important;
+    min-height: 50px !important;
+    margin: 0 0 15px !important;
+    border-radius: 5px;
+}
+.submit-news {
+    font-size: 20px;
+    width: 120px;
+    min-height: 50px;
+    height: 50px;
+    background: #3282b8;
+    color: #fff;
+    border: 1px solid #3282b8;
+    padding: 0 20px;
+    text-align: center;
+    line-height: 1.2;
+    border-radius: 5px;
+    display: inline-block;
+    float: none;
+}

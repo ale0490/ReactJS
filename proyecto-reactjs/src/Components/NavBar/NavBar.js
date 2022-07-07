@@ -1,72 +1,115 @@
-import "./NavBar.css";
-import * as React from 'react';
-import CardWidget from "../CartWidjet/CartWidget";
-import { Link } from "react-router-dom";
+//React
 import { useState } from 'react'
+import { Link } from "react-router-dom";
+//Material UI
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { AppBar, Toolbar } from "@mui/material";
+//Propio
+import CardWidget from "../CartWidjet/CartWidget";
+import "./NavBar.css";
 
 const NavBar = () => {
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElJoyeria, setAnchorElJoyeria] = useState(null);
+  const [anchorElAccs, setAnchorElAccs] = useState(null);
 
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleOpenJoyeria = (e) => {
+    setAnchorElJoyeria(e.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseJoyeria = () => {
+    setAnchorElJoyeria(null);
+  };
+
+  const handleOpenAccs = (e) => {
+    setAnchorElAccs(e.currentTarget);
+  };
+  
+  const handleCloseAccs = () => {
+    setAnchorElAccs(null);
   };
 
   const categories = ["Anillos", "Colgantes", "Brazaletes"];
+  const accs = ["Llaveros", "Tazas", "Accesorios Barba"];
 
   return (
-    <div className="navbar">
-      <img src="../logo.png" className="logo"/>
-      <ul className="ul-navbar">
-        <li>
-          <button className="button-navbar">
-            <Link to="/" className="link-navbar"> Inicio </Link>
-          </button>
-        </li>
-        <li>
-          <button className="button-navbar link-navbar"
-                  id="basic-button" 
-                  aria-controls={open ? 'basic-menu' : undefined} 
-                  aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined} 
-                  onClick={handleClick}  
-                  variant='text'> 
-            Productos 
-          </button>
-          <Menu id="basic-menu" 
-                anchorEl={anchorEl} 
-                open={open} 
-                onClose={handleClose} 
-                MenuListProps={{'aria-labelledby': 'basic-button',}}>
-            {categories.map( (cat) => {
-              return (
-                <MenuItem onClick={handleClose}>
-                  <Link to={`${cat}`} className="link-navbar"> {cat} </Link>
-                </MenuItem>
-              )})}
-          </Menu>
-        </li>
-        <li>
-          <button className="button-navbar">
-            <Link to="/Contacto" className="link-navbar"> Contacto </Link>
-          </button>
-        </li>
-        <li>
-        <Link to="/Cart" className="link-navbar">
-        <CardWidget/>
-        </Link>
-        </li>
-      </ul>
-    </div>
+    <AppBar position="sticky">
+      <Toolbar>
+        <div className="logo left">
+          <img className="img-logo" src="../logo.png"/>
+        </div>
+        <div className="main-nav">
+            <ul className="menu">
+              <li>
+                <Link to="/" className="nav-li deco-none"> Inicio </Link>
+              </li>
+              <li>
+                <button
+                      className="nav-li deco-none"
+                      id="joyeria-button"
+                      aria-controls="menu-appbar"
+                      aria-haspopup="true"
+                      onMouseMove={handleOpenJoyeria}
+                      variant='text'>
+                    Joyeria 
+                </button>
+                <Menu 
+                    anchorEl={anchorElJoyeria} 
+                    open={Boolean(anchorElJoyeria)} 
+                    onClose={handleCloseJoyeria} 
+                    MenuListProps={{'aria-labelledby': 'joyeria-button',}}>
+                  {categories.map( (cat) => {
+                    return (
+                      <MenuItem onClick={handleCloseJoyeria}>
+                        <Link to={`/Cat/${cat}`} className="deco-none link-cat-nav"> 
+                          {cat} 
+                        </Link>
+                      </MenuItem>
+                    )
+                  })}
+                </Menu>
+              </li>
+              <li>
+                <button 
+                    id="accs-button" 
+                    className="nav-li deco-none"
+                    onMouseEnter={handleOpenAccs}
+                    variant='text'>  
+                  Accesorios 
+                </button>
+                <Menu 
+                    anchorEl={anchorElAccs} 
+                    open={Boolean(anchorElAccs)} 
+                    onClose={handleCloseAccs}
+                    MenuListProps={{'aria-labelledby': 'accs-button',}}>
+                  {accs.map( (acc) => {
+                    return (
+                      <MenuItem onClick={handleCloseAccs}>
+                        <Link to={`/Cat/${acc}`} className="deco-none link-cat-nav"> {acc} </Link>
+                      </MenuItem>
+                    )
+                  })}
+                </Menu>
+              </li>
+              <li>
+              <Link to="/Contacto" className="nav-li deco-none"> 
+                Contacto 
+              </Link>
+            </li>
+            <li>
+              <Link to="/Pedido" className="nav-li deco-none"> 
+                Sigue tu pedido
+              </Link>
+            </li>
+            </ul>
+        </div>
+        <div className="mini-cart right">
+          <CardWidget/>
+        </div>
+      </Toolbar>
+    </AppBar>
   )
-}
+};
 
-export default NavBar
+export default NavBar;

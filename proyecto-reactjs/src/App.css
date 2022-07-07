@@ -1,15 +1,9 @@
 .App {
   text-align: center;
 }
-
-.App-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+*{
+  box-sizing: border-box;
 }
-.css-6hp17o-MuiList-root-MuiMenu-list{
-    padding: 0 !important;
+ul, li {
+  list-style: none;
 }

@@ -1,4 +1,5 @@
-import ItemDetailsContainer from '../Components/ItemDetails/ItemDetailscontainer'
+//Propio
+import ItemDetailsContainer from '../Components/ItemDetails/ItemDetailscontainer';
 
 const Details = () => {
     

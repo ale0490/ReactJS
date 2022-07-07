@@ -9,37 +9,38 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 //Propio
 import Item from "../Item/Item";
 
-const ItemList = ({data}) =>{
+const ItemListGral = ({data}) =>{
 
     const [products, setProducts] = useState([])
     const [productsListItem, setProductsListItem] = useState([])
-    const { category } = useParams()
+    const { Collection } = useParams()
 
     useEffect( () => {
         setProducts([data])
         setProductsListItem([])
-        searchcategory()
-    }, [category]);
+        searchCollection()
+    }, [Collection]);
 
-    const searchcategory = (productos) =>{
-        category ?  filterFirebase() : setProducts(productos)
+    const searchCollection = (productos) =>{
+        Collection ?  filterFirebase() : setProducts(productos)
         };
 
     const filterFirebase = async () => {
         const productRef = collection(db, 'jeweler')
-        const queryResult = query(productRef, where("category", "==", category))
+        const queryResult = query(productRef, where("Collection", "==", Collection))
         const querySnapshot = await getDocs(queryResult)
         const productList = querySnapshot.docs.map((doc) => {
             let product = doc.data()
             product.id = doc.id
-            return product 
+            return product
             })
         return setProductsListItem(productList);
-    };
+    }
+
+    {console.log(productsListItem)}
+    {console.log(Collection)}
 
     return (
-        <>
-        <h2 className="h2-home align-center"> Nuestros {category}</h2>
         <Grid container spacing={1}>
             {productsListItem.map( ({title, price, image, id, category}) => {
                 return(
@@ -50,8 +51,8 @@ const ItemList = ({data}) =>{
                 })
             }
         </Grid>
-        </>
     );
 };
 
-export default ItemList;
+
+export default ItemListGral;

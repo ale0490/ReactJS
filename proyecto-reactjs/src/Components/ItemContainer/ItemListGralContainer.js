@@ -6,9 +6,9 @@ import {Grid} from '@mui/material';
 import db from '../../Utils/firebaseConfig';
 import { collection, getDocs } from "firebase/firestore";
 //Propio
-import ItemList from './ItemList';
+import ItemListGral from "./ItemListGral";
 
-const ItemListContainer = () => {
+const ItemListGralContainer = () => {
 
   const [products, setProducts] = useState([])
   
@@ -28,17 +28,16 @@ const ItemListContainer = () => {
         product.id = doc.id
         return product
     })
-    
     return productList
   }
 
   return (
     <div className="container-card">
       <Grid container>
-        <ItemList data={products} />
+        <ItemListGral data={products} />
       </Grid>
     </div>
   )
 };
 
-export default ItemListContainer;
+export default ItemListGralContainer;
