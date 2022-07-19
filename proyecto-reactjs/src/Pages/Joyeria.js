@@ -1,5 +1,5 @@
 //Propio
-import ItemListGralContainer from "../Components/ItemContainer/ItemListGralContainer";
+import ItemListGral from '../Components/ItemContainer/ItemListGral';
 import './Styles.css';
 
 const Joyeria = () => {
@@ -7,7 +7,7 @@ const Joyeria = () => {
     return(
         <>
         <h2 className="h2-home width-2">Nuestra Joyeria</h2>
-        <ItemListGralContainer />
+        <ItemListGral collec="Joyeria" />
         </>
     )
 };

@@ -31,7 +31,7 @@ const Cart = () =>{
                             return(
                                 <div className='cart-container' key={item.id}>
                                     <div className="width-2 column left">
-                                            <img className='cart-image' src={`/${item.image}`}  />
+                                            <img className='cart-image' src={`${item.image}`}  />
                                     </div>
                                     <div className="width-1 column left">
                                             <h3 className="h3-cart">

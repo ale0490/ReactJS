@@ -52,7 +52,7 @@ const CardWidget = () => {
                         return(
                             <div className='cartwidget-container-item' key={item.id}>
                                 <div className='container-img-cartwidget'>
-                                    <img className='cartwidget-image' src={`/${item.image}`}  />
+                                    <img className='cartwidget-image' src={`${item.image}`}  />
                                 </div>
                                 <div className='cartwidget-details'>
                                     <p className='p-cart'>{item.title}</p>

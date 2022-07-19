@@ -9,14 +9,14 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 //Propio
 import Item from "../Item/Item";
 
-const ItemListGral = ({data}) =>{
+const ItemListGral = ({collec}) =>{
 
     const [products, setProducts] = useState([])
     const [productsListItem, setProductsListItem] = useState([])
-    const { Collection } = useParams()
+    const Collection = collec
 
     useEffect( () => {
-        setProducts([data])
+        setProducts()
         setProductsListItem([])
         searchCollection()
     }, [Collection]);
@@ -36,9 +36,6 @@ const ItemListGral = ({data}) =>{
             })
         return setProductsListItem(productList);
     }
-
-    {console.log(productsListItem)}
-    {console.log(Collection)}
 
     return (
         <Grid container spacing={1}>
