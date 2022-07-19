@@ -30,8 +30,8 @@ const NavBar = () => {
     setAnchorElAccs(null);
   };
 
-  const categories = ["Anillos", "Colgantes", "Brazaletes"];
-  const accs = ["Llaveros", "Tazas", "Accesorios Barba"];
+  const categories = ["Anillos", "Colgantes", "Brazaletes", "Abalorios"];
+  const accs = ["Llaveros", "Tazas", "Barba"];
 
   return (
     <AppBar position="sticky">
